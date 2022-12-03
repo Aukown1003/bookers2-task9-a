@@ -1,15 +1,23 @@
-<div class="message" style="width: 400px;">
-  <% @chats.each do |chat| %>
-    <% if chat.user_id == current_user.id %>
-      <p style="text-align: right;"><%= chat.message %></p>
-    <% else %>
-      <p style="text-align: left;"><%= chat.message %></p>
+<div class="container">
+  <div class ="row">
+    <div class="col-8">
+      <div class="d-flex justify-content-between">
+        <h5 class="text-left">ユーザー名:  <%= @user.name %></h5>
+        <h5 class="text-right">ユーザー名:  <%= current_user.name %></h5>
+      </div>
+      <% @chats.each do |chat| %>
+        <% if chat.user_id == current_user.id %>
+          <p class="text-right"><%= chat.message %></p>
+        <% else %>
+          <p class="text-left"><%= chat.message %></p>
+        <% end %>
+      <% end %>
+    
+    <%= form_with model: @chat do |f| %>
+      <%= f.text_field :message %>
+      <%= f.hidden_field :room_id %>
+      <%= f.submit "送信" %>
     <% end %>
-  <% end %>
+    </div>
+  </div>
 </div>
-
-<%= form_with model: @chat do |f| %>
-  <%= f.text_field :message %>
-  <%= f.hidden_field :room_id %>
-  <%= f.submit "送信" %>
-<% end %>
