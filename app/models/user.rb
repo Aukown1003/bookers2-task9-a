@@ -23,6 +23,8 @@ class User < ApplicationRecord
 
   has_many :followings, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  
+  # 応用課題8-a追記
 
   has_one_attached :profile_image
 
