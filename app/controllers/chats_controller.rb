@@ -18,9 +18,11 @@ class ChatsController < ApplicationController
   end
 
   def create
+    # request.formatで確認できる
     @chat = current_user.chats.new(chat_params)
-    @chat.save!
-    redirect_to request.referer
+    # @chat.save!
+    chat_room = @chat.room
+    @chats = chat_room.chats
   end
 
   private

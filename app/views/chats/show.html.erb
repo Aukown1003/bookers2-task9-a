@@ -5,19 +5,12 @@
         <h5 class="text-left">ユーザー名:  <%= @user.name %></h5>
         <h5 class="text-right">ユーザー名:  <%= current_user.name %></h5>
       </div>
-      <% @chats.each do |chat| %>
-        <% if chat.user_id == current_user.id %>
-          <p class="text-right"><%= chat.message %></p>
-        <% else %>
-          <p class="text-left"><%= chat.message %></p>
-        <% end %>
-      <% end %>
-    
-    <%= form_with model: @chat do |f| %>
-      <%= f.text_field :message %>
-      <%= f.hidden_field :room_id %>
-      <%= f.submit "送信" %>
-    <% end %>
+      <div id = "js_chat_list">
+        <%= render 'chats/index', chats: @chats %>
+      </div>
+      <div>
+        <%= render 'chats/form', chat: @chat %>
+      </div>
     </div>
   </div>
 </div>

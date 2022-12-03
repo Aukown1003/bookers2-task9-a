@@ -1,0 +1,4 @@
+$("#js_chat_list").html("<%= j(render 'chats/index', chats: @chats) %>");
+<!--フォームを送信したあとにフォームの値を空にします-->
+$("textfield").val('');
+<!--$("textarea").val('');-->
