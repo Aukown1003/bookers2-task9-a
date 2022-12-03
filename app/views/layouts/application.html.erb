@@ -12,7 +12,7 @@
     <%= render 'layouts/header' %>
       <main>
         <p id="notice"><%= notice %></p>
-        <% unless current_page?(root_path) || current_page?(chat_path) %>
+        <% unless current_page?(root_path) || request.path.include?("chats")%>
         <div class ="container text-center">
            <%= render 'layouts/search' %>
         </div>
