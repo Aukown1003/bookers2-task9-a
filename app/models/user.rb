@@ -25,6 +25,9 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   
   # 応用課題8-a追記
+  has_many :user_rooms
+  has_many :rooms, through: :user_rooms
+  has_many :chats
 
   has_one_attached :profile_image
 
