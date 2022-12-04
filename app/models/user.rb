@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   has_many :books, dependent: :destroy
+  has_many :read_counts, dependent: :destroy
 
   # @user.active_relationshipsでユーザーのフォローしている(followed)人を呼び出す
   # Relationshipに格納されているfollwer_idとfollowed_idを呼び出す
