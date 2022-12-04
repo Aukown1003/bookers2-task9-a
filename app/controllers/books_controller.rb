@@ -4,7 +4,14 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     # @user = @book.user ←不要　何故か？showの部分テンプレートで@user = @book.userにして渡せばいい
+    # read_count = ReadCount.new(book_id: @book.id, user_id: current_user.id)
+    # read_count.save
+    unless ReadCount.where(created_at: Time.zone.now.all_day).find_by(user_id: current_user.id, book_id: @book.id)
+      current_user.read_counts.create(book_id: @book.id)
+    end
+    # binding.pry
     @book_comment = BookComment.new
+
   end
 
   def index
