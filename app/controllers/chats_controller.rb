@@ -20,7 +20,7 @@ class ChatsController < ApplicationController
   def create
     # request.formatで確認できる
     @chat = current_user.chats.new(chat_params)
-    # @chat.save!
+    @chat.save!
     chat_room = @chat.room
     @chats = chat_room.chats
   end
